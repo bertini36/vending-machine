@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Login} from "./pages/Login";
-import {VendingMachine} from "./pages/VendingMachine";
-import {NotFound} from "./pages/NotFound";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Login } from "./pages/Login";
+import { VendingMachine } from "./pages/VendingMachine";
+import { NotFound } from "./pages/NotFound";
 
 function App() {
   return (

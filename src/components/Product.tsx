@@ -1,4 +1,6 @@
-// This is a TypeScript interface to define which props the component should receive
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+
 interface ProductProps {
 	title: string;
 	price: number;
@@ -7,9 +9,9 @@ interface ProductProps {
 export const Product = ({ title, price }: ProductProps) => {
 	return (
 		<div>
-			<span>{title}</span>
-			<span>{price}€</span>
-			<a href="#">Buy</a>
+			<Box sx={{ fontSize: 21, fontWeight: 800 }}>{title}</Box>
+			<Box>{price}€</Box>
+			<Button>Buy</Button>
 		</div>
 	)
 }

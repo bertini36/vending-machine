@@ -1,1 +1,7 @@
-export const VendingMachine = () => <h1>Welcome to the vending machine!</h1>
+import { Products } from '../components/Products'
+
+export const VendingMachine = () => {
+    return (
+        <Products />
+    )
+}
