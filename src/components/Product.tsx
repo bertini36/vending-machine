@@ -10,27 +10,25 @@ interface ProductProps {
 
 export const Product = ({ title, price, color, photo }: ProductProps) => {
 	return (
-		<div style={{
+		<Box sx={{
 			backgroundColor: '#fff',
 			paddingTop: '5%',
 			paddingBottom: '3%',
 			borderRadius: '7px',
 			height: '200px',
-			border: '1px solid',
-			borderColor: color,
 			cursor: 'pointer',
+			'&:hover': {
+				border: '2px solid',
+				borderColor: color,
+			},
 		}}>
 			<Box sx={{ fontSize: 21, fontWeight: 800, color: color }}>{ title }</Box>
-			<Box sx={{ paddingTop: '4%' }}>
+			<Box sx={{ marginTop: '4%', marginBottom: '4%' }}>
 				<img src={photo} style={{ width: '50%', height: '50%', alignSelf: 'center' }} alt={"logo"}/>
 			</Box>
-			<Box style={{
-				paddingTop: '3%',
-				fontSize: '30px',
-				color: color,
-			}}>
-				<span style={{ border: '1px solid', borderRadius: '30px', padding: 5}}>{ price }€</span>
+			<Box style={{fontSize: '30px', fontStyle: 'bold', color: color}}>
+				<strong style={{ border: '2px solid', borderRadius: '30px', padding: 5}}>{ price }€</strong>
 			</Box>
-		</div>
+		</Box>
 	)
 }
