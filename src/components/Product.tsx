@@ -14,7 +14,7 @@ export const Product = ({ title, price, color, photo }: ProductProps) => {
 			paddingTop: '5%',
 			paddingBottom: '3%',
 			borderRadius: '7px',
-			height: '270px',
+			height: '250px',
 			cursor: 'pointer',
 			'&:hover': {
 				border: '2px solid',
