@@ -1,4 +1,6 @@
 import Box from '@mui/material/Box';
+import useSound from 'use-sound';
+import canmp3 from "../sounds/can.mp3";
 
 interface ProductProps {
 	title: string;
@@ -8,8 +10,10 @@ interface ProductProps {
 }
 
 export const Product = ({ title, price, color, photo }: ProductProps) => {
+	const [playSound] = useSound(canmp3);
 	return (
-		<Box sx={{
+		<Box onClick={() => playSound()}
+			sx={{
 			backgroundColor: '#fff',
 			paddingTop: '5%',
 			paddingBottom: '3%',
