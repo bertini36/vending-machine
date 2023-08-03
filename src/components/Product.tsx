@@ -1,4 +1,3 @@
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
 interface ProductProps {
@@ -15,7 +14,7 @@ export const Product = ({ title, price, color, photo }: ProductProps) => {
 			paddingTop: '5%',
 			paddingBottom: '3%',
 			borderRadius: '7px',
-			height: '200px',
+			height: '270px',
 			cursor: 'pointer',
 			'&:hover': {
 				border: '2px solid',

@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 export const VendingMachine = () => {
 	return (
 		<div style={{textAlign: 'center'}}>
-			<h1>ABACUM VENDING MACHINE</h1>
+			<h1>🍺 ABACUM VENDING MACHINE 🍺</h1>
 
 			<Grid container spacing={4}>
 				<Grid item xs={8}>
