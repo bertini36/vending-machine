@@ -11,8 +11,11 @@ interface ProductProps {
 
 export const Product = ({ title, price, color, photo }: ProductProps) => {
 	const [playSound] = useSound(canmp3);
+	const performClick = () => {
+		playSound();
+	};
 	return (
-		<Box onClick={() => playSound()}
+		<Box onClick={performClick}
 			sx={{
 			backgroundColor: '#fff',
 			paddingTop: '5%',

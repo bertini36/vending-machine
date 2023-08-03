@@ -6,8 +6,11 @@ interface ControllerButtonProps {value: number}
 
 export const ControllerButton = ({ value }: ControllerButtonProps) => {
     const [playSound] = useSound(coinmp3);
+    const performClick = () => {
+		playSound();
+	};
     return (
-        <Box onClick={() => playSound()}
+        <Box onClick={performClick}
             sx={{
             backgroundColor: '#eab308',
             fontSize: 20,
