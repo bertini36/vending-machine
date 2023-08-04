@@ -2,13 +2,18 @@ import Box from '@mui/material/Box';
 import useSound from 'use-sound';
 import coinmp3 from '../sounds/coin.mp3';
 
-interface ControllerButtonProps {value: number}
+interface ControllerButtonProps {
+    value: number,
+    callback: any,
+}
 
-export const ControllerButton = ({ value }: ControllerButtonProps) => {
+export const ControllerButton = ({ value, callback }: ControllerButtonProps) => {
     const [playSound] = useSound(coinmp3);
     const performClick = () => {
 		playSound();
+        callback();
 	};
+
     return (
         <Box onClick={performClick}
             sx={{
