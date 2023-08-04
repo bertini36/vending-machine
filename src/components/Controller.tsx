@@ -2,19 +2,26 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { ControllerButton } from "./ControllerButton";
 import React from 'react';
+import useSound from "use-sound";
+import coinsmp3 from "../sounds/coins.mp3";
 
 export const Controller = () => {
     let user: string =  "Guillem";
     const [balance, setBalance] = React.useState(0);
+    const [playSound] = useSound(coinsmp3);
     const increaseBalance = (value: number) => {
 		setBalance(balance + value);
 	};
+    const resetBalance = () => {
+        playSound();
+        setBalance(0);
+    };
 
     return (
         <div>
             <p style={{ fontSize: 25 }}>Hey <strong style={{ color: '#00B3CC' }}>{user}</strong>! Let's drink something!</p>
             <Box sx={{
-                backgroundImage: `linear-gradient(0deg, #D6FF7F, #00B3CC)`,
+                backgroundImage: `linear-gradient(270deg, #D6FF7F, #00B3CC)`,
                 borderRadius: '7px',
                 paddingX: '5%',
                 paddingY: '2%',
@@ -44,6 +51,26 @@ export const Controller = () => {
                 <Box>
                     <p style={{ fontSize: 20 }}>Current balance: <strong style={{ color: '#00B3CC' }}>{balance}€ 💰</strong></p>
                 </Box>
+                <Grid container spacing={0} direction="column" alignItems="center" justifyContent="center">
+                    <Box onClick={resetBalance}
+                        sx={{
+                        backgroundColor: '#dc2626',
+                        color: 'white',
+                        fontSize: 20,
+                        paddingX: '2%',
+                        paddingY: '1%',
+                        borderRadius: '7px',
+                        cursor: 'pointer',
+                        width: '15%',
+                        alignSelf: 'center',
+                        '&:hover': {
+                            border: '2px solid',
+                            borderColor: "#f87171",
+                        },
+                    }}>
+                        Refund
+                    </Box>
+                </Grid>
             </Box>
         </div>
     )
