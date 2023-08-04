@@ -1,35 +1,49 @@
 import { Product } from './Product'
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import { useState, useEffect } from 'react';
+import { api } from '../api';
 
 export const Products = () => {
-	return (
-		<Box sx={{
-			borderRadius: '7px',
-			paddingX: '5%',
-			paddingY: '2%',
-			marginLeft: '20px',
-		}}>
-			<Grid container spacing={4}>
-				<Grid item xs={4}>
-					<Product title='Rosa Blanca' price={3} color={"#22d3ee"} photo={'logos/rosa.png'}/>
+	const [products, setProducts] = useState<[] | null>(null);
+	const [error, setError] = useState<string | null>(null);
+
+	const fetchProducts = async () => {
+		try {
+			setProducts(await api.getProducts());
+		} catch (err) {
+			setError(`Error: ${err}`);
+		}
+	};
+
+	useEffect(() => {
+		if (products === null) fetchProducts();
+	});
+
+	if (products === null)
+		return <div>{error}</div>
+
+	else {
+		return (
+			<Box sx={{
+				borderRadius: '7px',
+				paddingX: '5%',
+				paddingY: '2%',
+				marginLeft: '20px',
+			}}>
+				<Grid container spacing={4}>
+					{products.map((product) => (
+						<Grid item xs={4}>
+							<Product
+								title={product["name"]}
+								price={product["price"]}
+								color={product["color"]}
+								photo={product["logo"]}
+							/>
+						</Grid>
+					))}
 				</Grid>
-				<Grid item xs={4}>
-					<Product title='Estrella Damm' price={1} color={"#dc2626"} photo={'logos/damm.png'}/>
-				</Grid>
-				<Grid item xs={4}>
-					<Product title='Estrella Galicia' price={2} color={"#171717"} photo={'logos/galicia.png'}/>
-				</Grid>
-				<Grid item xs={4}>
-					<Product title='1906' price={3} color={"#d97706"} photo={'logos/1906.jpeg'}/>
-				</Grid>
-				<Grid item xs={4}>
-					<Product title='Kilikia' price={3} color={"#15803d"} photo={'logos/kilikia.jpeg'}/>
-				</Grid>
-				<Grid item xs={4}>
-					<Product title='Moritz' price={3} color={"#eab308"} photo={'logos/moritz.jpeg'}/>
-				</Grid>
-			</Grid>
-		</Box>
-	)
+			</Box>
+		)
+	}
 }
