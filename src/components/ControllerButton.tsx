@@ -23,8 +23,7 @@ export const ControllerButton = ({ value, callback }: ControllerButtonProps) => 
             cursor: 'pointer',
             paddingY: '1%',
             '&:hover': {
-				border: '2px solid',
-				borderColor: "#f59e0b",
+				backgroundColor: "#d97706",
 			},
         }}>
 

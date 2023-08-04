@@ -1,9 +1,9 @@
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
-import { ControllerButton } from "./ControllerButton";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import { ControllerButton } from './ControllerButton';
 import React from 'react';
-import useSound from "use-sound";
-import coinsmp3 from "../sounds/coins.mp3";
+import useSound from 'use-sound';
+import coinsmp3 from '../sounds/coins.mp3';
 
 export const Controller = () => {
     let user: string =  "Guillem";
@@ -64,8 +64,7 @@ export const Controller = () => {
                         width: '15%',
                         alignSelf: 'center',
                         '&:hover': {
-                            border: '2px solid',
-                            borderColor: "#f87171",
+                            backgroundColor: "#b91c1c",
                         },
                     }}>
                         Refund

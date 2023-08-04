@@ -10,7 +10,6 @@ export const Products = () => {
 			paddingX: '5%',
 			paddingY: '2%',
 			marginLeft: '20px',
-			height: '100%',
 		}}>
 			<Grid container spacing={4}>
 				<Grid item xs={4}>
