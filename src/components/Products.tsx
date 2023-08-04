@@ -5,7 +5,6 @@ import Grid from "@mui/material/Grid";
 export const Products = () => {
 	return (
 		<Box sx={{
-			backgroundImage: `linear-gradient(90deg, #D6FF7F, #00B3CC)`,
 			borderRadius: '7px',
 			paddingX: '5%',
 			paddingY: '2%',

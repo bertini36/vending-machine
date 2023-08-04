@@ -19,15 +19,15 @@ export const Controller = () => {
 
     return (
         <div>
-            <p style={{ fontSize: 25 }}>Hey <strong style={{ color: '#00B3CC' }}>{user}</strong>! Let's drink something!</p>
+            <p style={{fontSize: 25, color: 'white'}}>Hey <strong>{user}</strong>! Let's drink something!</p>
             <Box sx={{
-                backgroundImage: `linear-gradient(270deg, #D6FF7F, #00B3CC)`,
+                backgroundColor: 'white',
                 borderRadius: '7px',
                 paddingX: '5%',
                 paddingY: '2%',
 			    marginRight: '20px',
             }}>
-                <p style={{ fontSize: 20 }}>Give me some money! 🌚</p>
+                <p style={{fontSize: 20}}>Give me some money! 🌚</p>
                 <Grid container spacing={2}>
                     <Grid item xs={4}>
                         <ControllerButton value={0.5} callback={() => increaseBalance(0.5)}/>

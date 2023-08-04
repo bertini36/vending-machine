@@ -25,9 +25,10 @@ export const ControllerButton = ({ value, callback }: ControllerButtonProps) => 
             '&:hover': {
 				backgroundColor: "#d97706",
 			},
+            color: 'white',
         }}>
 
-            {value}€
+            <strong>{value}€</strong>
         </Box>
     )
 }

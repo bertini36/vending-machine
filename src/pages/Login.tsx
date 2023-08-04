@@ -14,7 +14,7 @@ export const Login = () => {
             justifyContent="center"
             sx={{
                 minHeight: '100vh',
-                backgroundImage: `linear-gradient(270deg, #D6FF7F, #00B3CC)`,
+                backgroundImage: `linear-gradient(90deg, #D6FF7F, #00B3CC)`,
             }}
         >
             <Grid item xs={3}>
