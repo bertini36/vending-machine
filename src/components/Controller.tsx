@@ -49,7 +49,7 @@ export const Controller = () => {
                     </Grid>
 			    </Grid>
                 <Box>
-                    <p style={{ fontSize: 20 }}>Current balance: <strong style={{ color: '#00B3CC' }}>{balance}€ 💰</strong></p>
+                    <p style={{fontSize: 20}}>Current balance: <strong style={{ color: '#00B3CC' }}>{balance}€ 💰</strong></p>
                 </Box>
                 <Grid container spacing={0} direction="column" alignItems="center" justifyContent="center">
                     <Box onClick={resetBalance}
