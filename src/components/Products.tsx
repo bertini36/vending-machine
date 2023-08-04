@@ -23,6 +23,12 @@ export const Products = () => {
 				<Grid item xs={4}>
 					<Product title='1906' price={3} color={"#d97706"} photo={'logos/1906.jpeg'}/>
 				</Grid>
+				<Grid item xs={4}>
+					<Product title='Kilikia' price={3} color={"#15803d"} photo={'logos/kilikia.jpeg'}/>
+				</Grid>
+				<Grid item xs={4}>
+					<Product title='Moritz' price={3} color={"#eab308"} photo={'logos/moritz.jpeg'}/>
+				</Grid>
 			</Grid>
 		</Box>
 	)

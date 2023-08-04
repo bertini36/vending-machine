@@ -16,7 +16,7 @@ export const VendingMachine = () => {
 				textAlign: 'center',
             }}
         >
-			<h1 style={{color: 'white', marginTop: 0, paddingTop: '3%'}}>🍺 ABACUM VENDING MACHINE 🍺</h1>
+			<h1 style={{color: 'white', marginTop: 0}}>🍺 ABACUM VENDING MACHINE 🍺</h1>
 
 			<Grid container spacing={2}>
 				<Grid item xs={8}>
