@@ -14,7 +14,7 @@ export const Products = () => {
 
     useEffect(() => {
         if (products === null)
-            fetchProducts();
+            fetchProducts();    // TODO: Check warning
     });
 
     if (products === null)

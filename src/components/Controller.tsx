@@ -30,7 +30,7 @@ export const Controller = () => {
 
     useEffect(() => {
         if (user === null)
-            fetchUser();
+            fetchUser();    // TODO: Check warning
     });
 
     return (
