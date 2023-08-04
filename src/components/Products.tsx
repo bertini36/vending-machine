@@ -10,14 +10,15 @@ export const Products = () => {
 
 	const fetchProducts = async () => {
 		try {
-			setProducts(await api.getProducts());
+			setProducts(await api.fetchProducts());
 		} catch (err) {
 			setError(`Error: ${err}`);
 		}
 	};
 
 	useEffect(() => {
-		if (products === null) fetchProducts();
+		if (products === null)
+			fetchProducts();
 	});
 
 	if (products === null)
