@@ -2,14 +2,14 @@ import Box from '@mui/material/Box';
 import useSound from 'use-sound';
 import canmp3 from "../sounds/can.mp3";
 
-interface ProductProps {
-    title: string;
+export interface ProductProps {
+    name: string;
     price: number;
     color: string;
-    photo: string;
+    logo: string;
 }
 
-export const Product = ({title, price, color, photo}: ProductProps) => {
+export const Product = ({name, price, color, logo}: ProductProps) => {
     const [playSound] = useSound(canmp3);
     const performClick = () => {
         if (process.env.ENABLE_SOUNDS) playSound();
@@ -32,9 +32,9 @@ export const Product = ({title, price, color, photo}: ProductProps) => {
                 fontSize: 21,
                 fontWeight: 800,
                 color: color
-            }}>{title}</Box>
+            }}>{name}</Box>
             <img
-                src={photo}
+                src={logo}
                 style={{
                     width: '40%',
                     height: '60%',

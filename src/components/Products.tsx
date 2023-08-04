@@ -1,4 +1,4 @@
-import {Product} from './Product'
+import {Product, ProductProps} from './Product'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import {useState, useEffect} from 'react';
@@ -33,13 +33,13 @@ export const Products = () => {
                 marginLeft: '20px',
             }}>
                 <Grid container spacing={4}>
-                    {products.map((product) => (
+                    {products.map((product: ProductProps) => (
                         <Grid item xs={4}>
                             <Product
-                                title={product["name"]}
-                                price={product["price"]}
-                                color={product["color"]}
-                                photo={product["logo"]}
+                                name={product.name}
+                                price={product.price}
+                                color={product.color}
+                                logo={product.logo}
                             />
                         </Grid>
                     ))}
