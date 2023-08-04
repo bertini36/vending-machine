@@ -13,7 +13,7 @@ export const Controller = () => {
 		setBalance(balance + value);
 	};
     const resetBalance = () => {
-        playSound();
+		if (process.env.USE_SOUNDS) playSound();
         setBalance(0);
     };
 

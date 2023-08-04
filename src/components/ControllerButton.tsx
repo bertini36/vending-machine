@@ -10,7 +10,7 @@ interface ControllerButtonProps {
 export const ControllerButton = ({ value, callback }: ControllerButtonProps) => {
     const [playSound] = useSound(coinmp3);
     const performClick = () => {
-		playSound();
+		if (process.env.USE_SOUNDS) playSound();
         callback();
 	};
 
