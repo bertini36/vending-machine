@@ -28,7 +28,7 @@ export const Products = () => {
                 marginLeft: '20px',
             }}>
                 <Grid container spacing={4}>
-                    {products.map((product: ProductProps) => (
+                    {products?.map((product: ProductProps) => (
                         <Grid item xs={4}>
                             <Product
                                 name={product.name}

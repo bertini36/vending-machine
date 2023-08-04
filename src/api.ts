@@ -1,5 +1,6 @@
 import axios from 'axios';
-import products_mock from './utils/mocks/products.json';
+import productsMock from './utils/mocks/products.json';
+import userMock from './utils/mocks/user.json';
 import {showErrorNotification} from "./utils/notifications";
 
 
@@ -26,7 +27,19 @@ export const api = {
                 showErrorNotification("Error retrieving products 😞");
             }
         } else {
-            return products_mock["products"]
+            return productsMock["products"];
+        }
+    },
+    fetchUser: async (username: string) => {
+        if (process.env.USE_BACKEND) {
+            try {
+                const response = await axios.get(process.env.BACKEND_URL + '/user/' + username);
+                return response.data;
+            } catch (err) {
+                showErrorNotification("Error retrieving user data 😞");
+            }
+        } else {
+            return userMock;
         }
     }
 }

@@ -1,14 +1,29 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import {ControllerButton} from './ControllerButton';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import useSound from 'use-sound';
 import coinsmp3 from '../sounds/coins.mp3';
+import {api} from "../api";
+
+interface UserProps {
+    username: string;
+    first_name: string;
+    last_name: string;
+    balance: number;
+}
 
 export const Controller = () => {
-    let user: string = "Guillem";
+    let username: string = "magic";
+    const [user, setUser] = useState<UserProps | null>(null);
     const [balance, setBalance] = React.useState(0);
     const [playSound] = useSound(coinsmp3);
+
+    const fetchUser = async () => {
+        const user = await api.fetchUser(username);
+        setUser(user);
+        setBalance(user.balance)
+    };
     const increaseBalance = (value: number) => {
         setBalance(balance + value);
     };
@@ -17,12 +32,17 @@ export const Controller = () => {
         setBalance(0);
     };
 
+    useEffect(() => {
+        if (user === null)
+            fetchUser();
+    });
+
     return (
         <div>
             <p style={{
                 fontSize: 25,
                 color: 'white'
-            }}>Hey <strong>{user}</strong>! Let's drink something!</p>
+            }}>Hey <strong>{user?.first_name} {user?.last_name}</strong>! Let's drink something!</p>
             <Box sx={{
                 backgroundColor: 'white',
                 borderRadius: '7px',
