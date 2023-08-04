@@ -12,7 +12,7 @@ interface ProductProps {
 export const Product = ({ title, price, color, photo }: ProductProps) => {
 	const [playSound] = useSound(canmp3);
 	const performClick = () => {
-		if (process.env.USE_SOUNDS) playSound();
+		if (process.env.ENABLE_SOUNDS) playSound();
 	};
 	return (
 		<Box onClick={performClick}
