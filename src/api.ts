@@ -1,5 +1,6 @@
 import axios from 'axios';
-import products_mock from './mocks/products.json';
+import products_mock from './utils/mocks/products.json';
+import {showErrorNotification} from "./utils/notifications";
 
 
 export const api = {
@@ -22,7 +23,7 @@ export const api = {
                 const response = await axios.get(process.env.BACKEND_URL + '/products');
                 return response.data["products"];
             } catch (err) {
-                throw Error("Error retrieving products 😞");
+                showErrorNotification("Error retrieving products 😞");
             }
         } else {
             return products_mock["products"]
