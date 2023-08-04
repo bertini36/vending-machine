@@ -1,8 +1,9 @@
-import {Product, ProductProps} from './Product'
+import {Product} from './Product'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import {useState, useEffect} from 'react';
 import {api} from '../api';
+import {ProductProps} from '../utils/interfaces';
 
 export const Products = () => {
     const [products, setProducts] = useState<[] | null>(null);

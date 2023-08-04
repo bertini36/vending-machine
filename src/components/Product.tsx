@@ -1,13 +1,7 @@
 import Box from '@mui/material/Box';
 import useSound from 'use-sound';
-import canmp3 from "../sounds/can.mp3";
-
-export interface ProductProps {
-    name: string;
-    price: number;
-    color: string;
-    logo: string;
-}
+import canmp3 from '../sounds/can.mp3';
+import {ProductProps} from '../utils/interfaces';
 
 export const Product = ({name, price, color, logo}: ProductProps) => {
     const [playSound] = useSound(canmp3);
@@ -41,7 +35,7 @@ export const Product = ({name, price, color, logo}: ProductProps) => {
                     alignSelf: 'center',
                     marginTop: '4%',
                     marginBottom: '4%'
-                }} alt={"logo"}/>
+                }} alt={'logo'}/>
             <Box style={{fontSize: '30px', fontStyle: 'bold', color: color}}>
                 <strong style={{
                     border: '2px solid',

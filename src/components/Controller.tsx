@@ -4,17 +4,12 @@ import {ControllerButton} from './ControllerButton';
 import React, {useEffect, useState} from 'react';
 import useSound from 'use-sound';
 import coinsmp3 from '../sounds/coins.mp3';
-import {api} from "../api";
+import {api} from '../api';
+import {UserProps} from '../utils/interfaces';
 
-interface UserProps {
-    username: string;
-    first_name: string;
-    last_name: string;
-    balance: number;
-}
 
 export const Controller = () => {
-    let username: string = "magic";
+    let username: string = 'magic';
     const [user, setUser] = useState<UserProps | null>(null);
     const [balance, setBalance] = React.useState(0);
     const [playSound] = useSound(coinsmp3);
@@ -42,7 +37,8 @@ export const Controller = () => {
             <p style={{
                 fontSize: 25,
                 color: 'white'
-            }}>Hey <strong>{user?.first_name} {user?.last_name}</strong>! Let's drink something!</p>
+            }}>Hey <strong>{user?.first_name} {user?.last_name}</strong>! Let's
+                drink something!</p>
             <Box sx={{
                 backgroundColor: 'white',
                 borderRadius: '7px',
@@ -81,8 +77,8 @@ export const Controller = () => {
                     <p style={{fontSize: 20}}>Current balance: <strong
                         style={{color: '#00B3CC'}}>{balance}€ 💰</strong></p>
                 </Box>
-                <Grid container spacing={0} direction="column"
-                      alignItems="center" justifyContent="center">
+                <Grid container spacing={0} direction='column'
+                      alignItems='center' justifyContent='center'>
                     <Box onClick={resetBalance}
                          sx={{
                              backgroundColor: '#dc2626',
@@ -95,7 +91,7 @@ export const Controller = () => {
                              width: '15%',
                              alignSelf: 'center',
                              '&:hover': {
-                                 backgroundColor: "#b91c1c",
+                                 backgroundColor: '#b91c1c',
                              },
                          }}>
                         Refund
