@@ -28,7 +28,7 @@ export const Login = () => {
                         <h2>Welcome uwu 🍺</h2>
                     </Box>
                     <Box sx={{paddingBottom: '5%'}}>
-                        <Input placeholder="Username" />
+                        <Input placeholder="Username"/>
                     </Box>
                     <Box sx={{
                         marginBottom: '5%',

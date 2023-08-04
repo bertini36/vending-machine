@@ -3,7 +3,7 @@ import products_mock from './mocks/products.json';
 
 
 export const api = {
-	performLogin: async () => {
+    performLogin: async () => {
         if (process.env.USE_BACKEND) {
             try {
                 await axios.get(process.env.BACKEND_URL + '/login');
