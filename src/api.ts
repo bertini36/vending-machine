@@ -41,5 +41,28 @@ export const api = {
         } else {
             return userMock;
         }
+    },
+    addBalance: async (username: string, balance: number, amount: number) => {
+        if (process.env.USE_BACKEND) {
+            try {
+                const response = await axios.patch(process.env.BACKEND_URL + '/user/' + username + '/add_balance', {
+                    amount: amount
+                });
+                return response.data["amount"];
+            } catch (err) {
+                showErrorNotification("Error increasing balance 😞");
+            }
+        } else {
+            return balance + amount;
+        }
+    },
+    refundBalance: async (username: string) => {
+        if (process.env.USE_BACKEND) {
+            try {
+                await axios.patch(process.env.BACKEND_URL + '/user/' + username + '/refund/');
+            } catch (err) {
+                showErrorNotification("Error resetting balance 😞");
+            }
+        }
     }
 }

@@ -19,11 +19,12 @@ export const Controller = () => {
         setUser(user);
         setBalance(user.balance)
     };
-    const increaseBalance = (value: number) => {
-        setBalance(balance + value);
+    const addBalance = async (amount: number) => {
+        setBalance(await api.addBalance(username, balance, amount));
     };
-    const resetBalance = () => {
+    const refundBalance = async () => {
         if (process.env.ENABLE_SOUNDS) playSound();
+        await api.refundBalance(username);
         setBalance(0);
     };
 
@@ -50,27 +51,27 @@ export const Controller = () => {
                 <Grid container spacing={2}>
                     <Grid item xs={4}>
                         <ControllerButton value={0.5}
-                                          callback={() => increaseBalance(0.5)}/>
+                                          callback={() => addBalance(0.5)}/>
                     </Grid>
                     <Grid item xs={4}>
                         <ControllerButton value={1.0}
-                                          callback={() => increaseBalance(1.0)}/>
+                                          callback={() => addBalance(1.0)}/>
                     </Grid>
                     <Grid item xs={4}>
                         <ControllerButton value={2.0}
-                                          callback={() => increaseBalance(2.0)}/>
+                                          callback={() => addBalance(2.0)}/>
                     </Grid>
                     <Grid item xs={4}>
                         <ControllerButton value={5.0}
-                                          callback={() => increaseBalance(5.0)}/>
+                                          callback={() => addBalance(5.0)}/>
                     </Grid>
                     <Grid item xs={4}>
                         <ControllerButton value={10.0}
-                                          callback={() => increaseBalance(10.0)}/>
+                                          callback={() => addBalance(10.0)}/>
                     </Grid>
                     <Grid item xs={4}>
                         <ControllerButton value={50.0}
-                                          callback={() => increaseBalance(50.0)}/>
+                                          callback={() => addBalance(50.0)}/>
                     </Grid>
                 </Grid>
                 <Box>
@@ -79,7 +80,7 @@ export const Controller = () => {
                 </Box>
                 <Grid container spacing={0} direction='column'
                       alignItems='center' justifyContent='center'>
-                    <Box onClick={resetBalance}
+                    <Box onClick={refundBalance}
                          sx={{
                              backgroundColor: '#dc2626',
                              color: 'white',
