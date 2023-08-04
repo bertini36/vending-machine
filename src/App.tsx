@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Login } from "./pages/Login";
 import { VendingMachine } from "./pages/VendingMachine";
 import { NotFound } from "./pages/NotFound";
+import 'noty/lib/noty.css';
+import 'noty/lib/themes/nest.css';
 
 function App() {
   return (

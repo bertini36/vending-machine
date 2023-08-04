@@ -3,16 +3,16 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import {useState, useEffect} from 'react';
 import {api} from '../api';
+import {showErrorNotification} from "../utils/notifications";
 
 export const Products = () => {
     const [products, setProducts] = useState<[] | null>(null);
-    const [error, setError] = useState<string | null>(null);
 
     const fetchProducts = async () => {
         try {
             setProducts(await api.fetchProducts());
-        } catch (err) {
-            setError(`Error: ${err}`);
+        } catch (error) {
+            showErrorNotification(`Error: {$error}`);
         }
     };
 
@@ -22,7 +22,7 @@ export const Products = () => {
     });
 
     if (products === null)
-        return <div>{error}</div>
+        return <div></div>
 
     else {
         return (

@@ -22,7 +22,7 @@ export const api = {
                 const response = await axios.get(process.env.BACKEND_URL + '/products');
                 return response.data["products"];
             } catch (err) {
-                throw Error("Error retrieving products");
+                throw Error("Error retrieving products 😞");
             }
         } else {
             return products_mock["products"]
