@@ -2,8 +2,8 @@ import {Product} from './Product'
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import {useState, useEffect} from 'react';
-import {fetchProducts as apiFetchProducts} from '../api';
-import {ProductProps} from '../utils/interfaces';
+import {fetchProducts as apiFetchProducts} from '../app/api';
+import {ProductProps} from '../app/interfaces';
 
 export const Products = () => {
     const [products, setProducts] = useState<[] | null>(null);

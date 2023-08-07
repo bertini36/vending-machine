@@ -1,12 +1,12 @@
 import Box from '@mui/material/Box';
 import useSound from 'use-sound';
 import canmp3 from '../sounds/can.mp3';
-import {ProductProps} from '../utils/interfaces';
+import {ProductProps} from '../app/interfaces';
 
 export const Product = ({name, price, color, logo}: ProductProps) => {
     const [playSound] = useSound(canmp3);
     const performClick = () => {
-        if (process.env.ENABLE_SOUNDS) playSound();
+        if (process.env.REACT_APP_ENABLE_SOUNDS === 'true') playSound();
     };
     return (
         <Box onClick={performClick}

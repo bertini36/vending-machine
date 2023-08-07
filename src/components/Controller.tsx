@@ -4,8 +4,8 @@ import {ControllerButton} from './ControllerButton';
 import React, {useEffect, useState} from 'react';
 import useSound from 'use-sound';
 import coinsmp3 from '../sounds/coins.mp3';
-import {fetchUser as apiFetchUser, addBalance as apiAddBalance, refundBalance as apiRefundBalance} from '../api';
-import {UserProps} from '../utils/interfaces';
+import {fetchUser as apiFetchUser, addBalance as apiAddBalance, refundBalance as apiRefundBalance} from '../app/api';
+import {UserProps} from '../app/interfaces';
 
 
 export const Controller = () => {
@@ -23,7 +23,7 @@ export const Controller = () => {
         setBalance(await apiAddBalance(username, balance, amount));
     };
     const refundBalance = async () => {
-        if (process.env.ENABLE_SOUNDS) playSound();
+        if (process.env.REACT_APP_ENABLE_SOUNDS === 'true') playSound();
         await apiRefundBalance(username);
         setBalance(0);
     };

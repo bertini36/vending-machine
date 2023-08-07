@@ -1,11 +1,10 @@
 import axios from 'axios';
-import productsMock from './utils/mocks/products.json';
-import userMock from './utils/mocks/user.json';
-import {showErrorNotification} from "./utils/notifications";
-
+import productsMock from './mocks/products.json';
+import userMock from './mocks/user.json';
+import {showErrorNotification} from "./notifications";
 
 export async function performLogin() {
-    if (process.env.USE_BACKEND) {
+    if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
             await axios.get(process.env.BACKEND_URL + '/login');
             return true;
@@ -19,7 +18,7 @@ export async function performLogin() {
 }
 
 export async function fetchProducts() {
-    if (process.env.USE_BACKEND) {
+    if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
             const response = await axios.get(process.env.BACKEND_URL + '/products');
             return response.data["products"];
@@ -32,7 +31,7 @@ export async function fetchProducts() {
 }
 
 export async function fetchUser(username: string) {
-    if (process.env.USE_BACKEND) {
+    if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
             const response = await axios.get(process.env.BACKEND_URL + '/user/' + username);
             return response.data;
@@ -44,7 +43,7 @@ export async function fetchUser(username: string) {
     }
 }
 export async function addBalance(username: string, balance: number, amount: number) {
-    if (process.env.USE_BACKEND) {
+    if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
             const response = await axios.patch(process.env.BACKEND_URL + '/user/' + username + '/add_balance', {
                 amount: amount
@@ -59,7 +58,7 @@ export async function addBalance(username: string, balance: number, amount: numb
 }
 
 export async function refundBalance(username: string) {
-    if (process.env.USE_BACKEND) {
+    if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
             await axios.patch(process.env.BACKEND_URL + '/user/' + username + '/refund/');
         } catch (err) {
