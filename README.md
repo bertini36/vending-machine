@@ -34,12 +34,12 @@ file and restart the application.
 
 ## 🖼️ Screenshots
 ### Login page
-![login page](https://github.com/bertini36/vending-machine/blob/master/screenshots/login.png?raw=true)
+![login page](https://github.com/bertini36/vending-machine/blob/master/public/screenshots/login.png?raw=true)
 
 ### Product selection page
-![product selection page](https://github.com/bertini36/vending-machine/blob/master/screenshots/vending-machine.png?raw=true)
+![product selection page](https://github.com/bertini36/vending-machine/blob/master/public/screenshots/vending-machine.png?raw=true)
 
 ### Mobile appearance
-![responsive](https://github.com/bertini36/vending-machine/blob/master/screenshots/mobile.png?raw=true)
+![responsive](https://github.com/bertini36/vending-machine/blob/master/public/screenshots/mobile.png?raw=true)
 
 <p align="center">&mdash; Built with :heart: from Mallorca &mdash;</p>
