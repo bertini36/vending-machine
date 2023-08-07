@@ -4,66 +4,66 @@ import userMock from './utils/mocks/user.json';
 import {showErrorNotification} from "./utils/notifications";
 
 
-// TODO: Export each functions separately
-export const api = {
-    performLogin: async () => {
-        if (process.env.USE_BACKEND) {
-            try {
-                await axios.get(process.env.BACKEND_URL + '/login');
-                return true;
-            } catch (err) {
-                showErrorNotification("Login error 😞");
-                return false;
-            }
-        } else {
+export async function performLogin() {
+    if (process.env.USE_BACKEND) {
+        try {
+            await axios.get(process.env.BACKEND_URL + '/login');
             return true;
+        } catch (err) {
+            showErrorNotification("Login error 😞");
+            return false;
         }
-    },
-    fetchProducts: async () => {
-        if (process.env.USE_BACKEND) {
-            try {
-                const response = await axios.get(process.env.BACKEND_URL + '/products');
-                return response.data["products"];
-            } catch (err) {
-                showErrorNotification("Error retrieving products 😞");
-            }
-        } else {
-            return productsMock["products"];
+    } else {
+        return true;
+    }
+}
+
+export async function fetchProducts() {
+    if (process.env.USE_BACKEND) {
+        try {
+            const response = await axios.get(process.env.BACKEND_URL + '/products');
+            return response.data["products"];
+        } catch (err) {
+            showErrorNotification("Error retrieving products 😞");
         }
-    },
-    fetchUser: async (username: string) => {
-        if (process.env.USE_BACKEND) {
-            try {
-                const response = await axios.get(process.env.BACKEND_URL + '/user/' + username);
-                return response.data;
-            } catch (err) {
-                showErrorNotification("Error retrieving user data 😞");
-            }
-        } else {
-            return userMock;
+    } else {
+        return productsMock["products"];
+    }
+}
+
+export async function fetchUser(username: string) {
+    if (process.env.USE_BACKEND) {
+        try {
+            const response = await axios.get(process.env.BACKEND_URL + '/user/' + username);
+            return response.data;
+        } catch (err) {
+            showErrorNotification("Error retrieving user data 😞");
         }
-    },
-    addBalance: async (username: string, balance: number, amount: number) => {
-        if (process.env.USE_BACKEND) {
-            try {
-                const response = await axios.patch(process.env.BACKEND_URL + '/user/' + username + '/add_balance', {
-                    amount: amount
-                });
-                return response.data["amount"];
-            } catch (err) {
-                showErrorNotification("Error increasing balance 😞");
-            }
-        } else {
-            return balance + amount;
+    } else {
+        return userMock;
+    }
+}
+export async function addBalance(username: string, balance: number, amount: number) {
+    if (process.env.USE_BACKEND) {
+        try {
+            const response = await axios.patch(process.env.BACKEND_URL + '/user/' + username + '/add_balance', {
+                amount: amount
+            });
+            return response.data["amount"];
+        } catch (err) {
+            showErrorNotification("Error increasing balance 😞");
         }
-    },
-    refundBalance: async (username: string) => {
-        if (process.env.USE_BACKEND) {
-            try {
-                await axios.patch(process.env.BACKEND_URL + '/user/' + username + '/refund/');
-            } catch (err) {
-                showErrorNotification("Error resetting balance 😞");
-            }
+    } else {
+        return balance + amount;
+    }
+}
+
+export async function refundBalance(username: string) {
+    if (process.env.USE_BACKEND) {
+        try {
+            await axios.patch(process.env.BACKEND_URL + '/user/' + username + '/refund/');
+        } catch (err) {
+            showErrorNotification("Error resetting balance 😞");
         }
     }
 }
