@@ -8,24 +8,14 @@ import {refundBalance as apiRefundBalance} from '../app/api';
 import type {RootState} from '../app/store';
 import {useSelector} from 'react-redux';
 import {updateBalance} from '../app/redux/user';
-import {useNavigate} from 'react-router-dom';
-import {
-    showErrorNotification,
-    showWarningNotification
-} from '../app/notifications';
+import {showWarningNotification} from '../app/notifications';
 import {useDispatch} from 'react-redux';
 
 
 export const Controller = () => {
     const [playSound] = useSound(coinsmp3);
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector((state: RootState) => state.user);
-
-    if (!user) {
-        navigate('/');
-        showErrorNotification('You must be logged in to access this page! 🙏');
-    }
 
     const refundBalance = async () => {
         if (user.balance === 0) {

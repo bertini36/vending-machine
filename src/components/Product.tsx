@@ -8,20 +8,13 @@ import {
     showSuccessNotification,
     showWarningNotification
 } from '../app/notifications';
-import {useNavigate} from 'react-router-dom';
 import {subtractBalance as apiSubtractBalance} from '../app/api';
 import {updateBalance} from '../app/redux/user';
 
 export const Product = ({name, price, color, logo}: ProductProps) => {
     const [playSound] = useSound(canmp3);
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector((state: RootState) => state.user);
-
-    if (!user) {
-        navigate('/');
-        showWarningNotification('You must be logged in to access this page! 🙏');
-    }
 
     const subtractBalance = async () => {
         if (user.balance < price) {

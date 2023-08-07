@@ -6,21 +6,36 @@ import {
     performLogin as apiPerformLogin,
     fetchUser as apiFetchUser
 } from '../app/api';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {setUser} from '../app/redux/user';
 import {useNavigate} from 'react-router-dom';
-import {showSuccessNotification} from '../app/notifications';
+import {
+    showSuccessNotification,
+    showWarningNotification
+} from '../app/notifications';
+import {RootState} from '../app/store';
 
 export const Login = () => {
     const [username, setUsername] = React.useState('');
+    const user = useSelector((state: RootState) => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    if (user.username !== '') {
+        navigate('/vending-machine');
+        showSuccessNotification('You are already logged in! 🙏');
+    }
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUsername(event.target.value);
     };
 
     const performLogin = async () => {
+        if (username === '') {
+            showWarningNotification('Please enter a username! 🙏');
+            return;
+        }
+
         const loginOk = await apiPerformLogin(username);
         if (loginOk) {
             const user = await apiFetchUser(username);
