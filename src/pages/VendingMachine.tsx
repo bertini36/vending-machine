@@ -16,14 +16,13 @@ export const VendingMachine = () => {
                 textAlign: 'center',
             }}
         >
-            <h1 style={{color: 'white', marginTop: 0}}>🍺 ABACUM VENDING MACHINE
-                🍺</h1>
+            <h1>🍺 ABACUM VENDING MACHINE 🍺</h1>
 
             <Grid container spacing={2}>
-                <Grid item xs={8}>
+                <Grid item lg={8} md={6} sm={12} xs={12}>
                     <Products/>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item lg={4} md={6} sm={12} xs={12}>
                     <Controller/>
                 </Grid>
             </Grid>

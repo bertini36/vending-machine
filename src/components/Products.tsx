@@ -14,7 +14,7 @@ export const Products = () => {
 
     useEffect(() => {
         if (products === null)
-            fetchProducts();    // TODO: Check warning
+            fetchProducts();
     });
 
     if (products === null)
@@ -26,11 +26,10 @@ export const Products = () => {
                 borderRadius: '7px',
                 paddingX: '5%',
                 paddingY: '2%',
-                marginLeft: '20px',
             }}>
                 <Grid container spacing={4}>
                     {products?.map((product: ProductProps) => (
-                        <Grid item xs={4}>
+                        <Grid item lg={4} md={6} sm={12} xs={12}>
                             <Product
                                 name={product.name}
                                 price={product.price}

@@ -34,12 +34,10 @@ export const Controller = () => {
                 color: 'white'
             }}>Hey <strong>{user?.first_name} {user?.last_name}</strong>! Let's
                 drink something!</p>
-            <Box sx={{
+            <Box id="controller" sx={{
                 backgroundColor: 'white',
-                borderRadius: '7px',
                 paddingX: '5%',
                 paddingY: '2%',
-                marginRight: '20px',
             }}>
                 <p style={{fontSize: 20}}>Give me some money! 🌚</p>
                 <Grid container spacing={2}>
@@ -74,7 +72,8 @@ export const Controller = () => {
                 </Box>
                 <Grid container spacing={0} direction='column'
                       alignItems='center' justifyContent='center'>
-                    <Box onClick={refundBalance}
+                    <Box id="refund-button"
+                         onClick={refundBalance}
                          sx={{
                              backgroundColor: '#dc2626',
                              color: 'white',
