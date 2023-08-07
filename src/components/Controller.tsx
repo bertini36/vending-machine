@@ -1,28 +1,23 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import {ControllerButton} from './ControllerButton';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import useSound from 'use-sound';
 import coinsmp3 from '../sounds/coins.mp3';
 import {
-    fetchUser as apiFetchUser,
     addBalance as apiAddBalance,
     refundBalance as apiRefundBalance
 } from '../app/api';
-import {UserProps} from '../app/interfaces';
+import type { RootState } from '../app/store';
+import {useSelector} from 'react-redux';
 
 
 export const Controller = () => {
     let username: string = 'magic';
-    const [user, setUser] = useState<UserProps | null>(null);
+    const user = useSelector((state: RootState) => state.user);
     const [balance, setBalance] = React.useState(0);
     const [playSound] = useSound(coinsmp3);
 
-    const fetchUser = async () => {
-        const user = await apiFetchUser(username);
-        setUser(user);
-        setBalance(user.balance)
-    };
     const addBalance = async (amount: number) => {
         setBalance(await apiAddBalance(username, balance, amount));
     };
@@ -31,11 +26,6 @@ export const Controller = () => {
         await apiRefundBalance(username);
         setBalance(0);
     };
-
-    useEffect(() => {
-        if (user === null)
-            fetchUser();    // TODO: Check warning
-    });
 
     return (
         <div>

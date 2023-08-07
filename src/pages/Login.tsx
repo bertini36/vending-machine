@@ -9,6 +9,7 @@ import {
 import {useDispatch} from 'react-redux';
 import {setUser} from '../app/redux/user';
 import {useNavigate} from 'react-router-dom';
+import {showSuccessNotification} from "../app/notifications";
 
 export const Login = () => {
     const [username, setUsername] = React.useState('');
@@ -24,7 +25,8 @@ export const Login = () => {
         if (loginOk) {
             const user = await apiFetchUser(username);
             dispatch(setUser(user));
-             navigate('/vending-machine');
+            navigate('/vending-machine');
+            showSuccessNotification(`Welcome ${user.first_name} ${user.last_name}!`);
         }
     };
 
