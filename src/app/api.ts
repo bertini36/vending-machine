@@ -3,17 +3,30 @@ import productsMock from './mocks/products.json';
 import userMock from './mocks/user.json';
 import {showErrorNotification} from "./notifications";
 
-export async function performLogin() {
+export async function performLogin(username: string) {
     if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
-            await axios.get(process.env.BACKEND_URL + '/login');
-            return true;
+            const response = await axios.post(process.env.BACKEND_URL + '/login', {"username": username});
+            return response.status === 200;
         } catch (err) {
             showErrorNotification("Login error 😞");
             return false;
         }
     } else {
         return true;
+    }
+}
+
+export async function fetchUser(username: string) {
+    if (process.env.REACT_APP_USE_BACKEND === 'true') {
+        try {
+            const response = await axios.get(process.env.BACKEND_URL + '/user/' + username);
+            return response.data;
+        } catch (err) {
+            showErrorNotification("Error retrieving user data 😞");
+        }
+    } else {
+        return userMock;
     }
 }
 
@@ -30,18 +43,6 @@ export async function fetchProducts() {
     }
 }
 
-export async function fetchUser(username: string) {
-    if (process.env.REACT_APP_USE_BACKEND === 'true') {
-        try {
-            const response = await axios.get(process.env.BACKEND_URL + '/user/' + username);
-            return response.data;
-        } catch (err) {
-            showErrorNotification("Error retrieving user data 😞");
-        }
-    } else {
-        return userMock;
-    }
-}
 export async function addBalance(username: string, balance: number, amount: number) {
     if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {

@@ -4,7 +4,11 @@ import {ControllerButton} from './ControllerButton';
 import React, {useEffect, useState} from 'react';
 import useSound from 'use-sound';
 import coinsmp3 from '../sounds/coins.mp3';
-import {fetchUser as apiFetchUser, addBalance as apiAddBalance, refundBalance as apiRefundBalance} from '../app/api';
+import {
+    fetchUser as apiFetchUser,
+    addBalance as apiAddBalance,
+    refundBalance as apiRefundBalance
+} from '../app/api';
 import {UserProps} from '../app/interfaces';
 
 

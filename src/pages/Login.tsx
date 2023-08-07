@@ -1,17 +1,40 @@
+import React from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
+import {
+    performLogin as apiPerformLogin,
+    fetchUser as apiFetchUser
+} from '../app/api';
+import {useDispatch} from 'react-redux';
+import {setUser} from '../app/redux/user';
+import {useNavigate} from 'react-router-dom';
 
 export const Login = () => {
-    let username = '';
+    const [username, setUsername] = React.useState('');
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setUsername(event.target.value);
+    };
+
+    const performLogin = async () => {
+        const loginOk = await apiPerformLogin(username);
+        if (loginOk) {
+            const user = await apiFetchUser(username);
+            dispatch(setUser(user));
+             navigate('/vending-machine');
+        }
+    };
 
     return (
         <Grid
             container
             spacing={0}
-            direction="column"
-            alignItems="center"
-            justifyContent="center"
+            direction='column'
+            alignItems='center'
+            justifyContent='center'
             sx={{
                 minHeight: '100vh',
                 backgroundImage: `linear-gradient(90deg, #D6FF7F, #00B3CC)`,
@@ -28,19 +51,24 @@ export const Login = () => {
                         <h2>Welcome uwu 🍺</h2>
                     </Box>
                     <Box sx={{paddingBottom: '5%'}}>
-                        <Input placeholder="Username"/>
+                        <Input
+                            value={username}
+                            onChange={handleInputChange}
+                            placeholder='Username'/>
                     </Box>
-                    <Box sx={{
-                        marginBottom: '5%',
-                        backgroundColor: '#eab308',
-                        fontSize: 20,
-                        cursor: 'pointer',
-                        paddingY: '1%',
-                        '&:hover': {
-                            backgroundColor: '#d97706',
-                        },
-                        color: 'white',
-                    }}>
+                    <Box
+                        onClick={performLogin}
+                        sx={{
+                            marginBottom: '5%',
+                            backgroundColor: '#eab308',
+                            fontSize: 20,
+                            cursor: 'pointer',
+                            paddingY: '1%',
+                            '&:hover': {
+                                backgroundColor: '#d97706',
+                            },
+                            color: 'white',
+                        }}>
                         <strong>Login</strong>
                     </Box>
                 </Box>
