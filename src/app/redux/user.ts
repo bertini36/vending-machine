@@ -1,12 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit';
 import type {PayloadAction} from '@reduxjs/toolkit';
-import {UserProps} from "../interfaces";
+import {UserProps} from '../interfaces';
 
 const initialState: UserProps = {
-    username: null,
-    first_name: null,
-    last_name: null,
-    balance: null,
+    username: '',
+    first_name: '',
+    last_name: '',
+    balance: 0,
 }
 
 export const userSlice = createSlice({
@@ -19,9 +19,13 @@ export const userSlice = createSlice({
             state.last_name = action.payload.last_name;
             state.balance = action.payload.balance;
         },
+        updateBalance: (state, action: PayloadAction<number>) => {
+            console.log('EOOOO', action.payload)
+            state.balance = action.payload;
+        },
     }
 });
 
 
-export const {setUser} = userSlice.actions;
+export const {setUser, updateBalance} = userSlice.actions;
 export default userSlice.reducer;

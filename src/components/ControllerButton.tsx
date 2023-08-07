@@ -1,21 +1,35 @@
 import Box from '@mui/material/Box';
 import useSound from 'use-sound';
 import coinmp3 from '../app/sounds/coin.mp3';
+import {addBalance as apiAddBalance} from '../app/api';
+import {useSelector} from 'react-redux';
+import {RootState} from '../app/store';
+import {updateBalance} from '../app/redux/user';
+import {showErrorNotification} from '../app/notifications';
+import {useNavigate} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {ControllerButtonProps} from '../app/interfaces';
 
-interface ControllerButtonProps {
-    value: number,
-    callback: any,
-}
 
-export const ControllerButton = ({value, callback}: ControllerButtonProps) => {
+export const ControllerButton = ({value}: ControllerButtonProps) => {
     const [playSound] = useSound(coinmp3);
-    const performClick = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const user = useSelector((state: RootState) => state.user);
+
+    if (!user) {
+        navigate('/');
+        showErrorNotification('You must be logged in to access this page! 🙏');
+    }
+
+    const addBalance = async () => {
         if (process.env.REACT_APP_ENABLE_SOUNDS === 'true') playSound();
-        callback();
+        const balance = await apiAddBalance(user.username, user.balance, value);
+        dispatch(updateBalance(balance));
     };
 
     return (
-        <Box onClick={performClick}
+        <Box onClick={addBalance}
              sx={{
                  backgroundColor: '#eab308',
                  fontSize: 20,
@@ -23,7 +37,7 @@ export const ControllerButton = ({value, callback}: ControllerButtonProps) => {
                  cursor: 'pointer',
                  paddingY: '1%',
                  '&:hover': {
-                     backgroundColor: "#d97706",
+                     backgroundColor: '#d97706',
                  },
                  color: 'white',
              }}>

@@ -20,3 +20,7 @@ export function showSuccessNotification(text: string, timeout = TIMEOUT) {
 export function showErrorNotification(text: string, timeout = TIMEOUT) {
     showNotification('error', text, timeout);
 }
+
+export function showWarningNotification(text: string, timeout = TIMEOUT) {
+    showNotification('warning', text, timeout);
+}

@@ -9,11 +9,11 @@ import {
 import {useDispatch} from 'react-redux';
 import {setUser} from '../app/redux/user';
 import {useNavigate} from 'react-router-dom';
-import {showSuccessNotification} from "../app/notifications";
+import {showSuccessNotification} from '../app/notifications';
 
 export const Login = () => {
     const [username, setUsername] = React.useState('');
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

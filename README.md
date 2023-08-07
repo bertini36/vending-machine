@@ -30,7 +30,7 @@ Some environmental variables can be set to tweak the application, you just need 
 file and restart the application.
 - `REACT_APP_USE_BACKEND`: By default local mocks are used
 - `REACT_APP_BACKEND_URL`: If `REACT_APP_USE_BACKEND` is set to `true`, this variable will be used as the backend url
-- `REACT_APP_ENABLE_SOUNDS`: Enable sounds to live the whole experience
+- `REACT_APP_ENABLE_SOUNDS`: Enable sounds to have a more immersive experience 🔊
 
 ## 🖼️ Screenshots
 ### Login page

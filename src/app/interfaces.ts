@@ -1,8 +1,8 @@
 export interface UserProps {
-    username: string | null;
-    first_name: string | null;
-    last_name: string | null;
-    balance: number | null;
+    username: string;
+    first_name: string;
+    last_name: string;
+    balance: number;
 }
 
 export interface ProductProps {
@@ -10,4 +10,8 @@ export interface ProductProps {
     price: number;
     color: string;
     logo: string;
+}
+
+export interface ControllerButtonProps {
+    value: number,
 }
