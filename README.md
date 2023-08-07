@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/63256236-62c6-4627-abf5-d86d23bfdfe5/deploy-status)](https://app.netlify.com/sites/inspiring-vacherin-3b1976/deploys)
+
 <h3 align="center">
     bertini36/vending-machine 🍺
 </h3>
