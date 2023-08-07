@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import {ControllerButton} from './ControllerButton';
 import React from 'react';
 import useSound from 'use-sound';
-import coinsmp3 from '../sounds/coins.mp3';
+import coinsmp3 from '../app/sounds/coins.mp3';
 import {
     addBalance as apiAddBalance,
     refundBalance as apiRefundBalance

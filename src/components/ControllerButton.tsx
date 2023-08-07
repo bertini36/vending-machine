@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import useSound from 'use-sound';
-import coinmp3 from '../sounds/coin.mp3';
+import coinmp3 from '../app/sounds/coin.mp3';
 
 interface ControllerButtonProps {
     value: number,
