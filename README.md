@@ -3,8 +3,8 @@
 </h3>
 <p align="center">
   <a href="#-installation">Installation</a>&nbsp;&nbsp;•&nbsp;
-  <a href="#-tweaks">Tweaks</a>&nbsp;&nbsp;•&nbsp;
-  <a href="#-screenshots">Screenshots</a>&nbsp;&nbsp;
+  <a href="#%EF%B8%8Ftweaks">Tweaks</a>&nbsp;&nbsp;•&nbsp;
+  <a href="#%EF%B8%8F-screenshots">Screenshots</a>&nbsp;&nbsp;
 </p>
 
 ## 🍺 Vending machine
@@ -25,7 +25,7 @@ npm install
 npm run start
 ```
 
-## ⚙️Tweaks
+## ⚙️ Tweaks
 Some environmental variables can be set to tweak the application, you just need to edit `.env.development`
 file and restart the application.
 - `REACT_APP_USE_BACKEND`: By default local mocks are used
@@ -39,7 +39,7 @@ file and restart the application.
 ### Product selection page
 ![product selection page](https://github.com/bertini36/vending-machine/blob/main/public/screenshots/vending-machine.png?raw=true)
 
-### Mobile appearance
+### Mobile experience
 ![responsive](https://github.com/bertini36/vending-machine/blob/main/public/screenshots/mobile.png?raw=true)
 
 <p align="center">&mdash; Built with :heart: from Mallorca &mdash;</p>
