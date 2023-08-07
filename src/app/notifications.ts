@@ -1,6 +1,6 @@
 import Noty from 'noty';
 
-const TIMEOUT = 5000;
+const TIMEOUT = 3000;
 
 export function showNotification(type: any, text: string, timeout = TIMEOUT) {
     new Noty({

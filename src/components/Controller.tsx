@@ -9,7 +9,10 @@ import type {RootState} from '../app/store';
 import {useSelector} from 'react-redux';
 import {updateBalance} from '../app/redux/user';
 import {useNavigate} from 'react-router-dom';
-import {showErrorNotification} from '../app/notifications';
+import {
+    showErrorNotification,
+    showWarningNotification
+} from '../app/notifications';
 import {useDispatch} from 'react-redux';
 
 
@@ -25,6 +28,11 @@ export const Controller = () => {
     }
 
     const refundBalance = async () => {
+        if (user.balance === 0) {
+            showWarningNotification('You have no money to refund! 🤷‍♂️');
+            return;
+        }
+
         if (process.env.REACT_APP_ENABLE_SOUNDS === 'true') playSound();
         const refunded = await apiRefundBalance(user.username);
         if (refunded)
