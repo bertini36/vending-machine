@@ -4,6 +4,7 @@ import userMock from './utils/mocks/user.json';
 import {showErrorNotification} from "./utils/notifications";
 
 
+// TODO: Export each functions separately
 export const api = {
     performLogin: async () => {
         if (process.env.USE_BACKEND) {
@@ -11,7 +12,7 @@ export const api = {
                 await axios.get(process.env.BACKEND_URL + '/login');
                 return true;
             } catch (err) {
-                // TODO: Manage error and just return false when forbidden
+                showErrorNotification("Login error 😞");
                 return false;
             }
         } else {

@@ -17,6 +17,8 @@ export const Product = ({name, price, color, logo}: ProductProps) => {
                  borderRadius: '7px',
                  height: '240px',
                  cursor: 'pointer',
+                 border: '2px solid',
+                 borderColor: 'transparent',
                  '&:hover': {
                      border: '2px solid',
                      borderColor: color,
