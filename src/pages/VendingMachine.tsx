@@ -1,19 +1,40 @@
 import {Products} from '../components/Products'
 import Grid from '@mui/material/Grid';
 import {Controller} from '../components/Controller';
-import {showErrorNotification} from '../app/notifications';
+import {
+    showErrorNotification,
+} from '../app/notifications';
 import {useNavigate} from 'react-router-dom';
-import {useSelector} from 'react-redux';
-import {RootState} from '../app/store';
+import {
+    fetchUser as apiFetchUser,
+    performLogin as apiPerformLogin
+} from "../app/api";
+import {setUser} from "../app/redux/user";
+import {useDispatch} from "react-redux";
+import {useEffect} from "react";
 
 export const VendingMachine = () => {
-    const user = useSelector((state: RootState) => state.user);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    if (user.username === '') {
-        showErrorNotification('You must be logged in to access this page! 🙏');
-        navigate('/');
-    }
+    const performLogin = async (username: string) => {
+        const loginOk = await apiPerformLogin(username);
+        if (loginOk) {
+            const user = await apiFetchUser(username);
+            dispatch(setUser(user));
+        }
+    };
+
+    useEffect(() => {
+        const username = localStorage.getItem('username');
+        console.log("username", username);
+        if (username) {
+            performLogin(username);
+        } else {
+            showErrorNotification('You must be logged in to access this page! 🙏');
+            navigate('/');
+        }
+    });
 
     return (
         <Grid
