@@ -18,7 +18,6 @@ export const Product = ({id, name, price, color, logo, stock}: ProductProps) => 
     const user = useSelector((state: RootState) => state.user);
 
     const buy = async () => {
-        console.log("stock", stock);
         if (stock === 0) {
             showWarningNotification('There is no stock! 😢');
             return;
