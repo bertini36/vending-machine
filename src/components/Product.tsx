@@ -8,28 +8,36 @@ import {
     showSuccessNotification,
     showWarningNotification
 } from '../app/notifications';
-import {subtractBalance as apiSubtractBalance} from '../app/api';
+import {buy as apiBuy} from '../app/api';
 import {updateBalance} from '../app/redux/user';
+import {decreaseStock} from '../app/redux/products';
 
-export const Product = ({name, price, color, logo}: ProductProps) => {
+export const Product = ({id, name, price, color, logo, stock}: ProductProps) => {
     const [playSound] = useSound(canmp3);
     const dispatch = useDispatch();
     const user = useSelector((state: RootState) => state.user);
 
-    const subtractBalance = async () => {
+    const buy = async () => {
+        console.log("stock", stock);
+        if (stock === 0) {
+            showWarningNotification('There is no stock! 😢');
+            return;
+        }
         if (user.balance < price) {
             showWarningNotification('You don\'t have enough balance! 😢');
             return;
         }
 
         if (process.env.REACT_APP_ENABLE_SOUNDS === 'true') playSound();
-        const balance = await apiSubtractBalance(user.username, user.balance, price);
-        dispatch(updateBalance(balance));
+        const payload = await apiBuy(id, user.username, user.balance, price, stock);
+        dispatch(updateBalance(payload["new_balance"]));
+        dispatch(decreaseStock(id));
         showSuccessNotification('Enjoy your drink! 🍻');
     };
 
     return (
-        <Box onClick={subtractBalance}
+        <Box onClick={buy}
+             className={`${stock === 0 ? "sold-out" : ""}`}
              sx={{
                  backgroundColor: '#fff',
                  paddingTop: '5%',

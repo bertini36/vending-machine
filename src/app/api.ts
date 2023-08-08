@@ -58,21 +58,6 @@ export async function addBalance(username: string, balance: number, amount: numb
     }
 }
 
-export async function subtractBalance(username: string, balance: number, amount: number) {
-    if (process.env.REACT_APP_USE_BACKEND === 'true') {
-        try {
-            const response = await axios.patch(process.env.BACKEND_URL + '/user/' + username + '/subtract_balance', {
-                amount: amount
-            });
-            return response.data['amount'];
-        } catch (err) {
-            showErrorNotification('Error subtracting balance 😞');
-        }
-    } else {
-        return balance - amount;
-    }
-}
-
 export async function refundBalance(username: string) {
     if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
@@ -84,5 +69,23 @@ export async function refundBalance(username: string) {
         }
     } else {
         return true;
+    }
+}
+
+export async function buy(username: string, product_id: string, balance: number, amount: number, current_stock: number) {
+    if (process.env.REACT_APP_USE_BACKEND === 'true') {
+        try {
+            const response = await axios.post(process.env.BACKEND_URL + '/buy/' + product_id, {
+                username: username
+            });
+            return response.data;
+        } catch (err) {
+            showErrorNotification('Error subtracting balance 😞');
+        }
+    } else {
+        return {
+            "new_balance": balance - amount,
+            "new_stock": current_stock - 1
+        };
     }
 }

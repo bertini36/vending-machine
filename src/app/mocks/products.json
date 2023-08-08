@@ -1,6 +1,7 @@
 {
   "products": [
     {
+      "id": "1",
       "name": "Rosa Blanca",
       "logo": "logos/rosa.png",
       "color": "#22d3ee",
@@ -8,6 +9,7 @@
       "stock": 5
     },
     {
+      "id": "2",
       "name": "Estrella Damm",
       "logo": "logos/damm.png",
       "color": "#dc2626",
@@ -15,6 +17,7 @@
       "stock": 5
     },
     {
+      "id": "3",
       "name": "Estrella Galicia",
       "logo": "logos/galicia.png",
       "color": "#171717",
@@ -22,6 +25,7 @@
       "stock": 5
     },
     {
+      "id": "4",
       "name": "1906",
       "logo": "logos/1906.jpeg",
       "color": "#d97706",
@@ -29,6 +33,7 @@
       "stock": 5
     },
     {
+      "id": "5",
       "name": "Kilikia",
       "logo": "logos/kilikia.jpeg",
       "color": "#15803d",
@@ -36,6 +41,7 @@
       "stock": 5
     },
     {
+      "id": "6",
       "name": "Moritz",
       "logo": "logos/moritz.jpeg",
       "color": "#eab308",

@@ -6,10 +6,12 @@ export interface UserProps {
 }
 
 export interface ProductProps {
+    id: string,
     name: string;
     price: number;
     color: string;
     logo: string;
+    stock: number;
 }
 
 export interface ControllerButtonProps {
