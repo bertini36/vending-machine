@@ -10,11 +10,13 @@ import {useSelector} from 'react-redux';
 import {updateBalance} from '../app/redux/user';
 import {showWarningNotification} from '../app/notifications';
 import {useDispatch} from 'react-redux';
+import {useNavigate} from "react-router-dom";
 
 
 export const Controller = () => {
     const [playSound] = useSound(coinsmp3);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const user = useSelector((state: RootState) => state.user);
 
     const refundBalance = async () => {
@@ -28,6 +30,11 @@ export const Controller = () => {
         if (refunded)
             dispatch(updateBalance(0));
     };
+
+    const logout = () => {
+        localStorage.removeItem('username');
+        navigate('/');
+    }
 
     return (
         <div>
@@ -86,6 +93,27 @@ export const Controller = () => {
                              },
                          }}>
                         Refund
+                    </Box>
+                </Grid>
+                <Grid container spacing={0} direction='column'
+                      alignItems='right' justifyContent='right'>
+                    <Box id='refund-button'
+                         onClick={logout}
+                         sx={{
+                             color: '#00B3CC',
+                             fontSize: 20,
+                             paddingX: '2%',
+                             paddingY: '1%',
+                             borderRadius: '7px',
+                             cursor: 'pointer',
+                             width: '15%',
+                             alignSelf: 'right',
+                             borderColor: '#00B3CC',
+                             '&:hover': {
+                                 textDecoration: 'underline',
+                             },
+                         }}>
+                        Logout
                     </Box>
                 </Grid>
             </Box>

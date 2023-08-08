@@ -8,10 +8,10 @@ import {useNavigate} from 'react-router-dom';
 import {
     fetchUser as apiFetchUser,
     performLogin as apiPerformLogin
-} from "../app/api";
-import {setUser} from "../app/redux/user";
-import {useDispatch} from "react-redux";
-import {useEffect} from "react";
+} from '../app/api';
+import {setUser} from '../app/redux/user';
+import {useDispatch} from 'react-redux';
+import {useEffect} from 'react';
 
 export const VendingMachine = () => {
     const navigate = useNavigate();
@@ -27,7 +27,6 @@ export const VendingMachine = () => {
 
     useEffect(() => {
         const username = localStorage.getItem('username');
-        console.log("username", username);
         if (username) {
             performLogin(username);
         } else {
