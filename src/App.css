@@ -69,3 +69,13 @@ h1 {
     width: 100%;
   }
 }
+
+.sold-out {
+  background-color: black;
+  opacity: 0.6;
+  cursor: auto;
+}
+
+.sold-out:hover {
+  border-color: transparent;
+}

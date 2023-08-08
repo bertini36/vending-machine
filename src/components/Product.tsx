@@ -48,7 +48,6 @@ export const Product = ({id, name, price, color, logo, stock}: ProductProps) => 
                  border: '2px solid',
                  borderColor: 'transparent',
                  '&:hover': {
-                     border: '2px solid',
                      borderColor: color,
                  },
              }}>
