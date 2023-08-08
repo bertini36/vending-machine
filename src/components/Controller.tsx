@@ -95,20 +95,13 @@ export const Controller = () => {
                         Refund
                     </Box>
                 </Grid>
-                <Grid container spacing={0} direction='column'
-                      alignItems='right' justifyContent='right'>
+                <Grid container spacing={0} direction='row-reverse'>
                     <Box id='refund-button'
                          onClick={logout}
                          sx={{
                              color: '#00B3CC',
                              fontSize: 20,
-                             paddingX: '2%',
-                             paddingY: '1%',
-                             borderRadius: '7px',
                              cursor: 'pointer',
-                             width: '15%',
-                             alignSelf: 'right',
-                             borderColor: '#00B3CC',
                              '&:hover': {
                                  textDecoration: 'underline',
                              },
