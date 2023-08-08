@@ -63,6 +63,6 @@ describe('Product component', () => {
         );
 
         const product = getByText('1€');
-        expect(product.parentElement.parentElement).toHaveClass('sold-out');
+        expect(product?.parentElement?.parentElement).toHaveClass('sold-out');
     });
 });
