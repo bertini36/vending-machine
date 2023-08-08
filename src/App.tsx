@@ -1,22 +1,22 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Login } from "./pages/Login";
-import { VendingMachine } from "./pages/VendingMachine";
-import { NotFound } from "./pages/NotFound";
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {Login} from './pages/Login';
+import {VendingMachine} from './pages/VendingMachine';
+import {NotFound} from './pages/NotFound';
 import 'noty/lib/noty.css';
 import 'noty/lib/themes/nest.css';
 
 function App() {
-  return (
-	  <BrowserRouter>
-		  <Routes>
-			  <Route path="/" element={<Login/>}/>
-			  <Route path="/vending-machine" element={<VendingMachine/>}/>
-			  <Route path="*" element={<NotFound/>}/>
-		  </Routes>
-	  </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Login/>}/>
+                <Route path='/vending-machine' element={<VendingMachine/>}/>
+                <Route path='*' element={<NotFound/>}/>
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;

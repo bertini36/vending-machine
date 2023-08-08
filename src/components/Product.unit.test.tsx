@@ -1,8 +1,8 @@
-import { screen, render, fireEvent } from '@testing-library/react';
+import {screen, render, fireEvent} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import {Product} from './Product';
 import configureStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import {Provider} from 'react-redux';
 
 
 describe('Product component', () => {
@@ -13,7 +13,8 @@ describe('Product component', () => {
         store = mockStore({});
         const {getByText} = render(
             <Provider store={store}>
-                <Product id={'1'} name={'Test'} price={1} color={'red'} logo={'logo'} stock={0}/>
+                <Product id={'1'} name={'Test'} price={1} color={'red'}
+                         logo={'logo'} stock={0}/>
             </Provider>
         );
 
@@ -28,7 +29,8 @@ describe('Product component', () => {
         store = mockStore({'user': {'balance': 0}});
         const {getByText} = render(
             <Provider store={store}>
-                <Product id={'1'} name={'Test'} price={1} color={'red'} logo={'logo'} stock={1}/>
+                <Product id={'1'} name={'Test'} price={1} color={'red'}
+                         logo={'logo'} stock={1}/>
             </Provider>
         );
 
@@ -43,7 +45,8 @@ describe('Product component', () => {
         store = mockStore({'user': {'balance': 10}});
         const {getByText} = render(
             <Provider store={store}>
-                <Product id={'1'} name={'Test'} price={1} color={'red'} logo={'logo'} stock={1}/>
+                <Product id={'1'} name={'Test'} price={1} color={'red'}
+                         logo={'logo'} stock={1}/>
             </Provider>
         );
 
@@ -58,7 +61,8 @@ describe('Product component', () => {
         store = mockStore({});
         const {getByText} = render(
             <Provider store={store}>
-                <Product id={'1'} name={'Test'} price={1} color={'red'} logo={'logo'} stock={0}/>
+                <Product id={'1'} name={'Test'} price={1} color={'red'}
+                         logo={'logo'} stock={0}/>
             </Provider>
         );
 

@@ -27,6 +27,11 @@ npm install
 npm run start
 ```
 
+## 🧪 Tests
+```bash
+npm run test
+```
+
 ## ⚙️ Tweaks
 Some environmental variables can be set to tweak the application, you just need to edit `.env.development`
 file and restart the application.
