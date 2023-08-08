@@ -38,7 +38,7 @@ export const Controller = () => {
 
     return (
         <div>
-            <p style={{
+            <p id="welcome-message" style={{
                 fontSize: 25,
                 color: 'white'
             }}>Hey <strong>{user.first_name} {user.last_name}</strong>! Let's
