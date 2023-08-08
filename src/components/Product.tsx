@@ -37,16 +37,8 @@ export const Product = ({id, name, price, color, logo, stock}: ProductProps) => 
 
     return (
         <Box onClick={buy}
-             className={`${stock === 0 ? "sold-out" : ""}`}
+             className={`${stock === 0 ? "sold-out" : "with-stock"}`}
              sx={{
-                 backgroundColor: '#fff',
-                 paddingTop: '5%',
-                 paddingBottom: '3%',
-                 borderRadius: '7px',
-                 height: '240px',
-                 cursor: 'pointer',
-                 border: '2px solid',
-                 borderColor: 'transparent',
                  '&:hover': {
                      borderColor: color,
                  },
