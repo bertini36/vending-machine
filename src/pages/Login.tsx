@@ -67,7 +67,7 @@ export const Login = () => {
                             onChange={handleInputChange}
                             placeholder='Username'/>
                     </Box>
-                    <Box
+                    <Box id={'login-button'}
                         onClick={performLogin}
                         sx={{
                             marginBottom: '5%',
