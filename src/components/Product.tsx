@@ -30,7 +30,8 @@ export const Product = ({id, name, price, color, logo, stock}: ProductProps) => 
 
         if (process.env.REACT_APP_ENABLE_SOUNDS === 'true') playSound();
         const payload = await apiBuy(id, user.username, user.balance, price, stock);
-        dispatch(updateBalance(payload["new_balance"]));
+        const new_balance = payload["balance"];
+        dispatch(updateBalance(new_balance));
         dispatch(decreaseStock(id));
         showSuccessNotification('Enjoy your drink! 🍻');
     };

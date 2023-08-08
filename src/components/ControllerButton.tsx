@@ -16,8 +16,8 @@ export const ControllerButton = ({value}: ControllerButtonProps) => {
 
     const addBalance = async () => {
         if (process.env.REACT_APP_ENABLE_SOUNDS === 'true') playSound();
-        const balance = await apiAddBalance(user.username, user.balance, value);
-        dispatch(updateBalance(balance));
+        const new_balance = await apiAddBalance(user.username, user.balance, value);
+        dispatch(updateBalance(new_balance));
     };
 
     return (

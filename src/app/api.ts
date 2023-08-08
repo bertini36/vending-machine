@@ -6,7 +6,7 @@ import {showErrorNotification} from './notifications';
 export async function performLogin(username: string) {
     if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
-            const response = await axios.post(process.env.BACKEND_URL + '/login', {'username': username});
+            const response = await axios.post(process.env.BACKEND_URL + '/login', {'user_name': username});
             return response.status === 200;
         } catch (err) {
             showErrorNotification('Login error 😞');
@@ -34,7 +34,7 @@ export async function fetchProducts() {
     if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
             const response = await axios.get(process.env.BACKEND_URL + '/products');
-            return response.data['products'];
+            return response.data['list'];
         } catch (err) {
             showErrorNotification('Error retrieving products 😞');
         }
@@ -46,10 +46,10 @@ export async function fetchProducts() {
 export async function addBalance(username: string, balance: number, amount: number) {
     if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
-            const response = await axios.patch(process.env.BACKEND_URL + '/user/' + username + '/add_balance', {
+            const response = await axios.patch(process.env.BACKEND_URL + '/user/' + username + '/balance', {
                 amount: amount
             });
-            return response.data['amount'];
+            return response.data['balance'];
         } catch (err) {
             showErrorNotification('Error increasing balance 😞');
         }
