@@ -61,7 +61,7 @@ export async function addBalance(username: string, balance: number, amount: numb
 export async function refundBalance(username: string) {
     if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
-            await axios.patch(process.env.BACKEND_URL + '/user/' + username + '/refund/');
+            await axios.patch(process.env.BACKEND_URL + '/user/' + username + '/refund');
             return true;
         } catch (err) {
             showErrorNotification('Error resetting balance 😞');
@@ -72,10 +72,10 @@ export async function refundBalance(username: string) {
     }
 }
 
-export async function buy(username: string, product_id: string, balance: number, amount: number, current_stock: number) {
+export async function buy(username: string, productId: string, balance: number, amount: number, currentStock: number) {
     if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
-            const response = await axios.post(process.env.BACKEND_URL + '/buy/' + product_id, {
+            const response = await axios.post(process.env.BACKEND_URL + '/buy/' + productId, {
                 username: username
             });
             return response.data;
@@ -83,9 +83,6 @@ export async function buy(username: string, product_id: string, balance: number,
             showErrorNotification('Error subtracting balance 😞');
         }
     } else {
-        return {
-            "new_balance": balance - amount,
-            "new_stock": current_stock - 1
-        };
+        return {"balance": balance - amount, "stock": currentStock - 1};
     }
 }

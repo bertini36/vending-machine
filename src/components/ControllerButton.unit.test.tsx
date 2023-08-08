@@ -6,8 +6,8 @@ import {jest} from '@jest/globals';
 import {ControllerButton} from "./ControllerButton";
 import {addBalance} from "../app/api";
 
-jest.mock('../app/api')
-
+jest.mock('../app/api');
+``
 describe('ControllerButton component', () => {
     const mockStore = configureStore();
     let store;
