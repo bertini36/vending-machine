@@ -6,7 +6,7 @@ import {showErrorNotification} from './notifications';
 export async function performLogin(username: string) {
     if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
-            const response = await axios.post(process.env.BACKEND_URL + '/login', {'user_name': username});
+            const response = await axios.post(process.env.REACT_APP_BACKEND_URL + '/login/', {'username': username});
             return response.status === 200;
         } catch (err) {
             showErrorNotification('Login error 😞');
@@ -20,7 +20,8 @@ export async function performLogin(username: string) {
 export async function fetchUser(username: string) {
     if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
-            const response = await axios.get(process.env.BACKEND_URL + '/user/' + username);
+
+            const response = await axios.get(process.env.REACT_APP_BACKEND_URL + '/user/' + username);
             return response.data;
         } catch (err) {
             showErrorNotification('Error retrieving user data 😞');
@@ -33,8 +34,8 @@ export async function fetchUser(username: string) {
 export async function fetchProducts() {
     if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
-            const response = await axios.get(process.env.BACKEND_URL + '/products');
-            return response.data['list'];
+            const response = await axios.get(process.env.REACT_APP_BACKEND_URL + '/products');
+            return response.data;
         } catch (err) {
             showErrorNotification('Error retrieving products 😞');
         }
@@ -46,9 +47,8 @@ export async function fetchProducts() {
 export async function addBalance(username: string, balance: number, amount: number) {
     if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
-            const response = await axios.patch(process.env.BACKEND_URL + '/user/' + username + '/balance', {
-                amount: amount
-            });
+            const url = process.env.REACT_APP_BACKEND_URL + '/user/' + username + '/balance/';
+            const response = await axios.patch(url, {amount: amount});
             return response.data['balance'];
         } catch (err) {
             showErrorNotification('Error increasing balance 😞');
@@ -61,7 +61,7 @@ export async function addBalance(username: string, balance: number, amount: numb
 export async function refundBalance(username: string) {
     if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
-            await axios.patch(process.env.BACKEND_URL + '/user/' + username + '/refund');
+            await axios.patch(process.env.REACT_APP_BACKEND_URL + '/user/' + username + '/refund/');
             return true;
         } catch (err) {
             showErrorNotification('Error resetting balance 😞');
@@ -75,9 +75,8 @@ export async function refundBalance(username: string) {
 export async function buy(username: string, productId: string, balance: number, amount: number, currentStock: number) {
     if (process.env.REACT_APP_USE_BACKEND === 'true') {
         try {
-            const response = await axios.post(process.env.BACKEND_URL + '/buy/' + productId, {
-                username: username
-            });
+            const url = process.env.REACT_APP_BACKEND_URL + '/products/buy/' + productId + '/';
+            const response = await axios.post(url, {username: username});
             return response.data;
         } catch (err) {
             showErrorNotification('Error subtracting balance 😞');

@@ -18,7 +18,7 @@ describe('API', () => {
         const allOk = await performLogin(username);
 
         expect(allOk).toBe(true);
-        expect(axios.post).toHaveBeenCalledWith(process.env.BACKEND_URL + '/login', {'user_name': username});
+        expect(axios.post).toHaveBeenCalledWith(process.env.BACKEND_URL + '/login', {'username': username});
     });
 
     it('performLogin returns true when backend is not used', async () => {
